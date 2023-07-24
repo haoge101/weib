@@ -106,11 +106,11 @@ Connect_V2ray() {
 
 #Install_WARP_Client_Debian
 #Check_WARP_Client
-if [[ ${WARP_Client_Status} = active ]]; then
+#if [[ ${WARP_Client_Status} = active ]]; then
 	#Register_WARP_Account
 	#Set_WARP_Mode_Proxy
 	#Connect_WARP
-fi
+#fi
 #Install_V2ray_Client
 Generate_V2ray_Config_File
 if [[ $(command -v v2ray) ]]; then
