@@ -39,7 +39,7 @@ Install_V2ray_Client() {
 
 
 Generate_V2ray_Config_File() {
-	cat <<- EOF > /home/admin/v2ray_config.json
+	cat <<- EOF > /root/v2ray_config.json
 	{
 		"log": {
 			"access": "/var/log/v2ray/access.log",
@@ -90,9 +90,7 @@ Generate_V2ray_Config_File() {
 			{
 			  "type": "field",
 			  "domain": [
-				  "google.com",
-				  "chat.openai.com",
-				  "ip138.com"
+				  
 			  ],
 			  "outboundTag": "warp"
 		   }
@@ -103,7 +101,7 @@ Generate_V2ray_Config_File() {
 }
 
 Connect_V2ray() {
-	nohup v2ray run -c /home/admin/v2ray_config.json &
+	nohup v2ray run -c /root/v2ray_config.json &
 }
 
 #Install_WARP_Client_Debian
