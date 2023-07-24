@@ -106,14 +106,14 @@ Connect_V2ray() {
 	nohup v2ray run -c /home/admin/v2ray_config.json &
 }
 
-Install_WARP_Client_Debian
-Check_WARP_Client
+#Install_WARP_Client_Debian
+#Check_WARP_Client
 if [[ ${WARP_Client_Status} = active ]]; then
-	Register_WARP_Account
-	Set_WARP_Mode_Proxy
-	Connect_WARP
+	#Register_WARP_Account
+	#Set_WARP_Mode_Proxy
+	#Connect_WARP
 fi
-Install_V2ray_Client
+#Install_V2ray_Client
 Generate_V2ray_Config_File
 if [[ $(command -v v2ray) ]]; then
 	Connect_V2ray
