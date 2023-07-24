@@ -90,7 +90,7 @@ Generate_V2ray_Config_File() {
 			{
 			  "type": "field",
 			  "domain": [
-				  a.com
+				  "a.com"
 			  ],
 			  "outboundTag": "warp"
 		   }
