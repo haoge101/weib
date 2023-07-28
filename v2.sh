@@ -8,7 +8,7 @@ Install_Requirements_Debian() {
 Install_WARP_Client_Debian() {
     Install_Requirements_Debian
     curl https://pkg.cloudflareclient.com/pubkey.gpg | gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-    echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ bullseye main' | tee /etc/apt/sources.list.d/cloudflare-client.list
+    echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main' | tee /etc/apt/sources.list.d/cloudflare-client.list
     apt update
     apt -y install cloudflare-warp
 }
