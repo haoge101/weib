@@ -90,9 +90,7 @@ Generate_V2ray_Config_File() {
 			{
 			  "type": "field",
 			  "domain": [
-				  "quora.com",
-                                  "twitter.com",
-				  "facebook.com"
+				  "q.com"
 			  ],
 			  "outboundTag": "warp"
 		   }
@@ -106,13 +104,13 @@ Connect_V2ray() {
 	nohup v2ray run -c /root/v2ray_config.json &
 }
 
-Install_WARP_Client_Debian
-Check_WARP_Client
-if [[ ${WARP_Client_Status} = active ]]; then
-	Register_WARP_Account
-	Set_WARP_Mode_Proxy
-	Connect_WARP
-fi
+#Install_WARP_Client_Debian
+#Check_WARP_Client
+#if [[ ${WARP_Client_Status} = active ]]; then
+	#Register_WARP_Account
+	#Set_WARP_Mode_Proxy
+	#Connect_WARP
+#fi
 Install_V2ray_Client
 Generate_V2ray_Config_File
 if [[ $(command -v v2ray) ]]; then
