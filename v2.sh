@@ -113,7 +113,7 @@ if [[ ${WARP_Client_Status} = active ]]; then
 	Set_WARP_Mode_Proxy
 	Connect_WARP
 fi
-#Install_V2ray_Client
+Install_V2ray_Client
 Generate_V2ray_Config_File
 if [[ $(command -v v2ray) ]]; then
 	Connect_V2ray
