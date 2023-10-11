@@ -1,5 +1,27 @@
 server {
-    if ($host = diary.dingzihao.cn) {
+
+        root /var/www/html/diary.dingzihao.cn;
+        index index.html index.htm index.php index.nginx-debian.html;
+
+        server_name example.com www.example.com;
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;  
+                fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+                fastcgi_read_timeout 180;
+        }
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/sitecert/cer; # managed by Certbot
+    ssl_certificate_key /etc/sitecert/key; # managed by Certbot
+
+}
+server {
+    if ($host = example.com) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
@@ -7,7 +29,7 @@ server {
         listen 80;
         listen [::]:80;
 
-        server_name diary.dingzihao.cn;
+        server_name diary.dingzihao.cn
         return 404; # managed by Certbot
 
 
