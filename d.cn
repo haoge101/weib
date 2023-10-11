@@ -1,18 +1,20 @@
 server {
 
         root /var/www/html/diary.dingzihao.cn;
-        index index.html index.htm index.php index.nginx-debian.html;
+        index index.php;
 
-        server_name example.com www.example.com;
-        location ~ \.php$ {
-                include snippets/fastcgi-php.conf;  
-                fastcgi_pass unix:/run/php/php7.4-fpm.sock;
-                fastcgi_read_timeout 180;
-        }
+        server_name diary.dingzihao.cn;
+       location / {
+    try_files $uri $uri/ /index.php$is_args$args;
+  }
 
-        location / {
-                try_files $uri $uri/ =404;
-        }
+  location ~ \.php$ {
+    try_files $uri =404;
+    fastcgi_index index.php;
+    include fastcgi_params;
+    fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  }
 
     listen [::]:443 ssl ipv6only=on; # managed by Certbot
     listen 443 ssl; # managed by Certbot
@@ -21,7 +23,7 @@ server {
 
 }
 server {
-    if ($host = example.com) {
+    if ($host = diary.dingzihao.cn) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
