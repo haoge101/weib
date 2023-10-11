@@ -1,0 +1,23 @@
+server {
+
+  listen 80;
+  server_name diary.dingzihao.cn;
+
+  root /var/www/html;
+  index index.php index.html index.nginx-debian.html;
+  access_log /var/log/nginx/example_access.log;
+  error_log /var/log/nginx/example_error.log;
+
+  location / {
+    try_files $uri $uri/ /index.php$is_args$args;
+  }
+
+  location ~ \.php$ {
+    try_files $uri =404;
+    fastcgi_index index.php;
+    include fastcgi_params;
+    fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  }
+
+}
